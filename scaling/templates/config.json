@@ -36,7 +36,7 @@
 			},
 			"mem": {
 				"measurement": [
-					"mem_used_percent"
+					{"name": "mem_used_percent", "rename": "MemoryUtilization", "unit": "Percent"}
 				],
 				"metrics_collection_interval": 60
 			},
