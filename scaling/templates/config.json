@@ -7,7 +7,9 @@
 		"namespace": "nuskusa/custom_metrics",
 		"append_dimensions": {
 			"AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+        },
 		},
+
 		"metrics_collected": {
 			"cpu": {
 				"measurement": [
@@ -39,7 +41,7 @@
 				"resources": [
 					"*"
 				],
-				"metrics_collection_interval": 60
+        "metrics_collection_interval": 60
 			},
 			"netstat": {
 				"measurement": [

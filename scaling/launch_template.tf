@@ -23,7 +23,7 @@ resource "aws_launch_template" "nuskusa_launch_template" {
     iam_instance_profile { 
         name = module.iam.iam_instance_profile_name
     }
-  user_data = element(local.user_data, count.index)
+  #user_data = element(local.user_data, count.index)
 }
 
 
