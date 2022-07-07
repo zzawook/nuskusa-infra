@@ -6,10 +6,8 @@
 	"metrics": {
 		"namespace": "nuskusa/custom_metrics",
 		"append_dimensions": {
-			"AutoScalingGroupName": "${aws:AutoScalingGroupName}",
-			"InstanceId": "${aws:InstanceId}",
+			"AutoScalingGroupName": "${aws:AutoScalingGroupName}"
 		},
-		"aggregate_dimensions": [["AutoScalingGroupName"]]
 		"metrics_collected": {
 			"cpu": {
 				"measurement": [
@@ -37,6 +35,9 @@
 			"mem": {
 				"measurement": [
 					{"name": "mem_used_percent", "rename": "MemoryUtilization", "unit": "Percent"}
+				],
+				"resources": [
+					"*"
 				],
 				"metrics_collection_interval": 60
 			},
