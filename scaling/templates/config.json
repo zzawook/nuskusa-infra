@@ -34,19 +34,6 @@
 					"*"
 				]
 			},
-			"diskio": {
-				"measurement": [
-					"io_time",
-					"write_bytes",
-					"read_bytes",
-					"writes",
-					"reads"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				]
-			},
 			"mem": {
 				"measurement": [
 					"mem_used_percent"
