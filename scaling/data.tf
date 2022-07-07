@@ -26,12 +26,12 @@ data "aws_ami" "infra" {
   }
 }
 
-data "template_file" "app_userdata" {
-  template = file("templates/app/userdata.sh")
-  vars     = {}
-}
+#data "template_file" "app_userdata" {
+#  template = file("templates/app/userdata.sh")
+#  vars     = {}
+#}
 
-data "template_file" "infra_userdata" {
-  template = file("templates/infra/userdata.sh")
-  vars     = {}
-}
+#data "template_file" "infra_userdata" {
+#  template = file("templates/infra/userdata.sh")
+#  vars     = {}
+#}

@@ -7,14 +7,14 @@ monitoring    = true
 ami_filter_app = [
   {
     name   = "name"
-    values = ["nuskusa-app-image-*"]
+    values = ["nuskusa-app-image"]
   }
 ]
 
 ami_filter_infra = [
   {
     name   = "name"
-    values = ["nuskusa-infra-image-*"]
+    values = ["nuskusa-infra-image"]
   }
 ]
 

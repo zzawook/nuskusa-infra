@@ -1,4 +1,4 @@
-module "nuskusa-app-asg" {
+module "nuskusa-asg" {
   source = "terraform-aws-modules/autoscaling/aws"
   count  = length(local.names)
   # Autoscaling group
@@ -24,20 +24,16 @@ module "nuskusa-app-asg" {
 
     #Scaling Policy
     scaling_policies = {
-        increase1 = {
-            name = "Increment 1 Instance"
-            adjustment_type = "ChangeInCapacity"
-            policy_type = "SimpleScaling"
-            scaling_adjustment = 1
-            cooldown = 300
+        cpu_tracking = {
+            name = "nuskusa_cpu_tracking_policy"
+            policy_type = "TargetTrackingScaling"
+            target_tracking_configuration = {
+                predefined_metric_specification = {
+                    predefined_metric_type = "ASGAverageCPUUtilization"
+                }
+                target_value = 70.0
+            }
         },
-        decrement1 = {
-            name = "Decrement 1 Instance"
-            adjustment_type = "ChangeInCapacity"
-            policy_type = "SimpleScaling"
-            scaling_adjustment = 1
-            cooldown = 300
-        }
     }
 
   # IAM role & instand profile
@@ -52,5 +48,6 @@ module "nuskusa-app-asg" {
   #  }
 
   update_default_version = local.update_default_version
+    use_name_prefix = false
   tags                   = {}
 }

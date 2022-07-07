@@ -18,7 +18,7 @@ locals {
     trusted_role_services = var.trusted_role_services
     custom_role_policy_arns = var.custom_role_policy_arns
 
-  user_data = ["${base64encode(data.template_file.app_userdata.rendered)}", "${base64encode(data.template_file.infra_userdata.rendered)}"]
+#  user_data = ["${base64encode(data.template_file.app_userdata.rendered)}", "${base64encode(data.template_file.infra_userdata.rendered)}"]
 
   #Key Pair
   keyname    = var.keyname
@@ -42,4 +42,9 @@ locals {
 
   update_default_version = var.update_default_version
 
+    #Metric Alarms
+    mem_decrement_alarm_name = [format("%s_app_mem_decrement", var.name), format("%s_infra_mem_decrement", var.name)]
+    mem_increment_alarm_name = [format("%s_app_mem_increment", var.name), format("%s_infra_mem_increment", var.name)]
+    cpu_decrement_alarm_name = [format("%s_app_cpu_decrement", var.name), format("%s_infra_cpu_decrement", var.name)]
+    cpu_increment_alarm_name = [format("%s_app_cpu_increment", var.name), format("%s_infra_cpu_increment", var.name)]
 }

@@ -4,17 +4,11 @@
 		"run_as_user": "cwagent"
 	},
 	"metrics": {
-		"aggregation_dimensions": [
-			[
-				"InstanceId"
-			]
-		],
+		"namespace": "nuskusa/custom_metrics",
 		"append_dimensions": {
-			"AutoScalingGroupName": "${aws:AutoScalingGroupName}",
-			"ImageId": "${aws:ImageId}",
-			"InstanceId": "${aws:InstanceId}",
-			"InstanceType": "${aws:InstanceType}"
-		},
+			"AutoScalingGroupName": "${aws:AutoScalingGroupName}"
+        },
+		"aggregate_dimensions": [["AutoScalingGroupName"]],
 		"metrics_collected": {
 			"cpu": {
 				"measurement": [
@@ -24,7 +18,10 @@
 					"cpu_usage_system"
 				],
 				"metrics_collection_interval": 60,
-				"totalcpu": false
+				"resources": [
+          				"*"
+       				 ],
+       				 "totalcpu": true
 			},
 			"disk": {
 				"measurement": [
@@ -36,24 +33,14 @@
 					"*"
 				]
 			},
-			"diskio": {
-				"measurement": [
-					"io_time",
-					"write_bytes",
-					"read_bytes",
-					"writes",
-					"reads"
-				],
-				"metrics_collection_interval": 60,
-				"resources": [
-					"*"
-				]
-			},
 			"mem": {
 				"measurement": [
-					"mem_used_percent"
+					{"name": "mem_used_percent", "rename": "MemoryUtilization", "unit": "Percent"}
 				],
-				"metrics_collection_interval": 60
+                "resources": [
+                    "*"
+                ],
+                metrics_collection_interval": 60
 			},
 			"netstat": {
 				"measurement": [
