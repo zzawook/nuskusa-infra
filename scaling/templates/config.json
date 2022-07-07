@@ -8,7 +8,8 @@
 		"append_dimensions": {
 			"AutoScalingGroupName": "${aws:AutoScalingGroupName}"
         },
-		"aggregate_dimensions": [["AutoScalingGroupName"]],
+		},
+
 		"metrics_collected": {
 			"cpu": {
 				"measurement": [
@@ -37,10 +38,10 @@
 				"measurement": [
 					{"name": "mem_used_percent", "rename": "MemoryUtilization", "unit": "Percent"}
 				],
-                "resources": [
-                    "*"
-                ],
-                metrics_collection_interval": 60
+				"resources": [
+					"*"
+				],
+        "metrics_collection_interval": 60
 			},
 			"netstat": {
 				"measurement": [
