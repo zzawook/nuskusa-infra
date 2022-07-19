@@ -6,20 +6,18 @@ cd network
 terraform init
 terraform apply --auto-approve
 
-#Install Packer
-cd ..
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get update && sudo apt-get install packer
 
 #Create Launch Group, Target Group, ALB, and AutoScaling
-cd ../scaling
+cd scaling
 
 terraform init
 terraform apply --auto-approve
 
-#Create CloudWatch Alarm and AutoScaling Actions
-cd ../cloudwatch
+#Create CodeDeploy Pipeline
+cd ../codedeploy
 
 terraform init
 terraform apply --auto-approve
+
+# Other things I did:
+# Set up AWS Account(Admin Right), Role (CodeDeploy)

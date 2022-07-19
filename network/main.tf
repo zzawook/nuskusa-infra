@@ -9,6 +9,7 @@ module "vpc" {
   public_subnets  = local.public_subnets
 
   default_security_group_ingress = local.default_security_group_ingress
+    default_security_group_egress = local.default_security_group_egress
   manage_default_security_group  = local.manage_default_security_group
 
   enable_nat_gateway = local.enable_nat_gateway

@@ -20,12 +20,12 @@ ami_filter_infra = [
 
 trusted_role_services = ["ec2.amazonaws.com"]
 custom_role_policy_arns = [
-    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
-    "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
-    "arn:aws:iam::aws:policy/AmazonEC2FullAccess",
-    "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
-    "arn:aws:iam::aws:policy/AmazonInspector2FullAccess",
-    "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
+  "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess",
+  "arn:aws:iam::aws:policy/AmazonEC2FullAccess",
+  "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+  "arn:aws:iam::aws:policy/AmazonInspector2FullAccess",
+  "arn:aws:iam::aws:policy/AmazonS3FullAccess"
 ]
 
 #Remote Backend
@@ -40,9 +40,9 @@ public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCqkf5N5faS8NsxSd8Klcp1qVrdxC
 
 #AutoScaling Group
 asg_names          = ["nuskusa_app_asg", "nuskusa_infra_asg"]
-min_sizes          = [1, 1]
-max_sizes          = [5, 5]
-desired_capacities = [1, 1]
+min_sizes          = [2, 1]
+max_sizes          = [5, 1]
+desired_capacities = [2, 1]
 health_check_type  = "EC2"
 
 ebs_optimized      = false

@@ -24,3 +24,6 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plu
 sudo docker run hello-world
 
 sudo usermod -aG docker ubuntu
+
+sudo rm -rf /var/lib/cloud/instances
+sudo rm -f /var/lib/cloud/instance

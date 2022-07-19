@@ -1,7 +1,9 @@
 source "amazon-ebs" "ubuntu-app" {
-  ami_name      = format("nuskusa-app-image-%s", local.version)
-  instance_type = "t2.micro"
-  region        = "ap-southeast-1"
+  ami_name              = "nuskusa-app-image"
+  instance_type         = "t2.micro"
+  region                = "ap-southeast-1"
+  force_deregister      = true
+  force_delete_snapshot = true
   source_ami_filter {
     filters = {
       virtualization-type = "hvm"
@@ -15,9 +17,11 @@ source "amazon-ebs" "ubuntu-app" {
 }
 
 source "amazon-ebs" "ubuntu-infra" {
-  ami_name      = format("nuskusa-infra-image-%s", local.version)
-  instance_type = "t2.micro"
-  region        = "ap-southeast-1"
+  ami_name              = "nuskusa-infra-image"
+  instance_type         = "t2.micro"
+  region                = "ap-southeast-1"
+  force_deregister      = true
+  force_delete_snapshot = true
   source_ami_filter {
     filters = {
       virtualization-type = "hvm"
@@ -34,3 +38,5 @@ locals {
   created_at = timestamp()
   version    = formatdate("YYYYMMDDhhmm", local.created_at)
 }
+
+

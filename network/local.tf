@@ -10,6 +10,7 @@ locals {
   private_subnets = var.private_subnets
 
   default_security_group_ingress = var.default_security_group_ingress
+    default_security_group_egress = var.default_security_group_egress
   manage_default_security_group  = var.manage_default_security_group
 
   enable_ipv6 = var.enable_ipv6

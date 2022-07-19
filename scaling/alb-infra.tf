@@ -32,6 +32,16 @@ module "nuskusa_infra_alb" {
       port               = 80
       protocol           = "HTTP"
       target_group_index = 0
+    },
+    {
+      port = 3306
+      protocol = "HTTP"
+      target_group_index = 0
+    },
+    {
+      port = 8080
+      protocol = "HTTP"
+      target_group_index = 0
     }
   ]
 
