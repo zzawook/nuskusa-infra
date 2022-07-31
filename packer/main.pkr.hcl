@@ -19,22 +19,29 @@ build {
 
   provisioner "file" {
     #Path to your own AWS Credential File
-    source      = "${path.root}/aws/credentials"
+    source      = "/home/kjaehyeok21/.aws/credentials"
     destination = "/home/ubuntu/.aws/credentials"
   }
 
   provisioner "file" {
     #Path to your own AWS config file
-    source      = "${path.root}/aws/config"
+    source      = "/home/kjaehyeok21/.aws/config"
     destination = "/home/ubuntu/.aws/config"
   }
 
   provisioner "shell" {
     inline = [
       "cloud-init status --wait",
-      "export MYSQL_ROOT_PASSWORD=${var.MYSQL_ROOT_PASSWORD}",
-      "export MYSQL_USER=${var.MYSQL_USER}",
-      "export MYSQL_PASSWORD=${var.MYSQL_PASSWORD}"
+    ]
+    execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo MYSQL_ROOT_PASSWORD=${var.MYSQL_ROOT_PASSWORD} >> /etc/environment",
+      "echo MYSQL_USER=${var.MYSQL_USER} >> /etc/environment",
+      "echo MYSQL_PASSWORD=${var.MYSQL_PASSWORD} >> /etc/environment",
+      "echo MYSQL_DATABASE=${var.MYSQL_DATABASE} >> /etc/environment"
     ]
     execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
   }
@@ -73,19 +80,29 @@ build {
 
   provisioner "file" {
     #Path to your own AWS Credential File
-    source      = "${path.root}/aws/credentials"
+    source      = "/home/kjaehyeok21/.aws/credentials"
     destination = "/home/ubuntu/.aws/credentials"
   }
 
   provisioner "file" {
     #Path to your own AWS config file
-    source      = "${path.root}/aws/config"
+    source      = "/home/kjaehyeok21/.aws/config"
     destination = "/home/ubuntu/.aws/config"
   }
 
   provisioner "shell" {
     inline = [
       "cloud-init status --wait",
+    ]
+    execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
+  }
+
+  provisioner "shell" {
+    inline = [
+      "echo MYSQL_ROOT_PASSWORD=${var.MYSQL_ROOT_PASSWORD} >> /etc/environment",
+      "echo MYSQL_USER=${var.MYSQL_USER} >> /etc/environment",
+      "echo MYSQL_PASSWORD=${var.MYSQL_PASSWORD} >> /etc/environment",
+      "echo MYSQL_DATABASE=${var.MYSQL_DATABASE} >> /etc/environment"
     ]
     execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
   }

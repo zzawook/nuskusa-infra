@@ -19,5 +19,8 @@ cd ../codedeploy
 terraform init
 terraform apply --auto-approve
 
-# Other things I did:
+# Other things to do:
+# Before running this script: Install Packer
 # Set up AWS Account(Admin Right), Role (CodeDeploy)
+# Enter AWS credential location to packer build
+# Set environment variable for MYSQL_ROOT_PASSWORD, MYSQL_USER, MYSQL_DATABASE, MYSQL_PASSWORD

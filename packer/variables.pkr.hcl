@@ -9,3 +9,7 @@ variable "MYSQL_USER" {
 variable "MYSQL_PASSWORD" {
     type = string
 }
+
+variable "MYSQL_DATABASE" {
+    type = string
+}
