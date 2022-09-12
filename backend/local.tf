@@ -1,3 +1,0 @@
-locals {
-    region = var.region
-}

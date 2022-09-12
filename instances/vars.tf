@@ -6,6 +6,7 @@ variable "monitoring" {}
 
 variable "ami_filter_app" {}
 variable "ami_filter_infra" {}
+variable "ami_filter_single" {}
 
 variable "trusted_role_services" {}
 variable "custom_role_policy_arns" {}

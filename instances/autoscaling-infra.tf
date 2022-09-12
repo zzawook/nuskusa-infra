@@ -9,6 +9,8 @@ module "nuskusa_infra_asg" {
   health_check_type   = local.health_check_type
   vpc_zone_identifier = local.public_subnet_ids
 
+  #Enabled
+  # enabled = false
 
   # Launch template
   launch_template            = aws_launch_template.nuskusa_launch_template[1].name

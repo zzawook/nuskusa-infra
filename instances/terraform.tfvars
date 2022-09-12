@@ -18,6 +18,13 @@ ami_filter_infra = [
   }
 ]
 
+ami_filter_single = [
+    {
+        name = "name",
+        values = ["nuskusa-single-image"]
+    }
+]
+
 trusted_role_services = ["ec2.amazonaws.com"]
 custom_role_policy_arns = [
   "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
@@ -34,15 +41,15 @@ vpc_key    = "prod/network/vpc/terraform.tfstate"
 
 #Key Pair
 keyname    = "nuskusa_default_key"
-public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCqkf5N5faS8NsxSd8Klcp1qVrdxCCjLMqc4KYnIM5PPpiZaZO2jraiq6PXj6DrAhhed8Ka/E7HXrIo2t3QPCAwjxhmCQ5ZQjVQ9rn7pAWt4wz/sV7e+NTUp1GFTw9MbwaAYnFxwxYYY7C341uDgILSkHRMMY5VCWhl5v5/QHTIG1InA/D4gPoZdVmjrvzowvAOQ1t/hdVAfS0NdXAkbygbuIhxxHsRoXqrlfRnjY+hoAUfGtvlJYUH70zA0a/FFH10qDkpLMgPwlqrkfKVArbSLpjapEx5jGsmhXXUeJ8ZlL+MF/CINcIfzyC5VmgOqNNscQ+ORlnpOwrCYMthcAfqLh40F7w5BjMfQSofOzi23d+URt5vWUkQFa4HhhaOBi4hDhxBTthu2VMBD2Ladl/Plw5iavYn/s7P0Ywz0dYvF+QQOg////flmNk9Pf+X2ltkayI1H2X+Ohoijo/KEWXzMpXB/l+tq5ttcl9lNbJXmPE30mTflG7t9phesOrBr/eIn5MvqF+CwJLtohvp2Lif4N3EkYlVAUGxaMyripQd2KzFpgqaBjj29aUlEavZLdwtHWgcv7eTpYIm2bimr57t8BAdShFaRqFIJ4En2UHJrLX9KGLsl+61f+jCKZVyfwIzCPQ6giHFcCnkz76lRvZOmlG8OWLWeYnfc+vO/oeaxw== kjaehyeok21@kjaehyeok21-laptop"
+public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCB6cL29VUQlHAuHSBW0zBqkOp5z9YhsnEvHNqmplfilt9uZXeWi+JUDg6r12OJP1XikoLuYUVN3jHf7VI+R0O4VXoLJkbH1yn3id1CY2pv16lf+m+qCdkcd2K5M62VwJpaMC4JW18MwnzXTeb4rui1bzu5KEtUa0rGWnNDAccgh/Y20emJnoZkMFXfTN3pk3V2cPBOj9Z2OmB8jwp0H9LN0Nsf3tL9Pd8wCRq3w5dni4SDNHy1eMcnbnw0bK1eXH+L5Blbi4dRGpxyJBt0hB69Q29YmyhpBoRQQI22mBgziWn+DZygqiG2WkaKWuEtmrPfO52SqzCzPaXWiBwEY4TSubchCChLJIIJJp2/GvK5ha/PP3xjhdaH0A3fJc84Ld738fXG/eFij5A8HIaG10qsr3mjaIO1PxQZ/5fBwhIPK4RJW7w2l3C7LhMSDKkaasjKx7fiDU7Pu1LAcBRZAKIX8UobmyCBSF9BoIEITz6pN2mlfUX3q60cw5esQMdhnIs= kjaehyeok21@kjaehyeok21-laptop"
 
 #Target Group & ALB
 
 #AutoScaling Group
 asg_names          = ["nuskusa_app_asg", "nuskusa_infra_asg"]
-min_sizes          = [2, 1]
-max_sizes          = [5, 1]
-desired_capacities = [2, 1]
+min_sizes          = [1, 0] #[2, 1]
+max_sizes          = [1, 0] #[5, 1]
+desired_capacities = [1, 0] #[2, 1]
 health_check_type  = "EC2"
 
 ebs_optimized      = false
