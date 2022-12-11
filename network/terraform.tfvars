@@ -43,6 +43,13 @@ default_security_group_ingress = [
       protocol = "tcp"
       cidr_blocks = "0.0.0.0/0"
   },
+  {
+      description = "Allow Jenkins"
+      from_port = 8000
+      to_port = 8000
+      protocol = "tcp"
+      cidr_blocks = "0.0.0.0/0"
+  }
 ]
 default_security_group_egress = [
   {

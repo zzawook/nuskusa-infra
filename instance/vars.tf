@@ -6,3 +6,4 @@ variable "keyname" {}
 variable "public_key" {}
 variable "instance_type" {}
 variable "monitoring" {}
+variable "root_block_device" {}

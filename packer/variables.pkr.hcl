@@ -13,3 +13,7 @@ variable "MYSQL_PASSWORD" {
 variable "MYSQL_DATABASE" {
     type = string
 }
+
+variable "INSTA_ACCESS_TOKEN" {
+    type = string
+}

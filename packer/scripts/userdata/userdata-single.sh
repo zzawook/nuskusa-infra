@@ -4,26 +4,29 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
+#Initialize Jenkins with saved Jenkins configuration
+sudo mkdir /jenkins
+cd /jenkins
+sudo git clone https://$(cat /home/ubuntu/github.token)@github.com/NUS-Korea-Society/jenkins_home.git
+sudo mv -f /jenkins/jenkins_home/* /jenkins/
+sudo mv -f /jenkins/jenkins_home/.* /jenkins/
+sudo rm -r /jenkins/jenkins_home
+sudo chmod -R 777 /jenkins
+
 #Clone backend files
 cd /home/ubuntu
-
 sudo rm -r nuskusa-*
-
-sudo git clone "https://github.com/NUS-Korea-Society/nuskusa-backend.git"
 sudo git clone "https://github.com/NUS-Korea-Society/nuskusa-infra-single.git"
-sudo rm nuskusa-backend/docker-compose.yml
-sudo rm -r nuskusa-backend/codedeploy
-sudo mv nuskusa-infra-single/docker-compose.yml nuskusa-backend/
-sudo mv nuskusa-infra-single/mysql nuskusa-backend/
-sudo mv nuskusa-infra-single/codedeploy nuskusa-backend/
-
-#Run cwagent
-#sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/home/ubuntu/download/config.json -s
-
-#Run cdagent
-sudo service codedeploy-agent start
 
 #Run Backends
-cd /home/ubuntu/nuskusa-backend
+cd /home/ubuntu/nuskusa-infra-single
 docker compose up -d
 
+#Set-up 30 min period interval backup for MySQL DB
+sudo chmod 777 makeBackup.sh
+echo "*/30 * * * * sh /home/ubuntu/nuskusa-infra-single/makeBackup.sh" >> /home/ubuntu/crontab
+crontab /home/ubuntu/crontab
+
+#Run Jenkins
+cd /home/ubuntu/nuskusa-infra-single/jenkins
+docker compose up -d

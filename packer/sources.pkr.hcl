@@ -36,7 +36,7 @@ source "amazon-ebs" "ubuntu-infra" {
 
 source "amazon-ebs" "ubuntu-single" {
   ami_name              = "nuskusa-single-image"
-  instance_type         = "t2.micro"
+  instance_type         = "t3a.medium"
   region                = "ap-southeast-1"
   force_deregister      = true
   force_delete_snapshot = true

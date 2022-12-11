@@ -8,4 +8,8 @@ module "ec2-single-instance" {
   instance_type = local.instance_type
   key_name      = local.keyname
   monitoring    = local.monitoring
+
+  subnet_id = local.subnet_ids[0]
+
+  root_block_device = local.root_block_device
 }

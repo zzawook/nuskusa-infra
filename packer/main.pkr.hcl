@@ -151,6 +151,11 @@ build {
     destination = "/home/ubuntu/.aws/config"
   }
 
+  provisioner "file" {
+      source = "/home/kjaehyeok21/mydev/.credential/github.token"
+      destination = "/home/ubuntu/github.token"
+  }
+
   provisioner "shell" {
     inline = [
       "cloud-init status --wait",
@@ -163,7 +168,8 @@ build {
       "echo MYSQL_ROOT_PASSWORD=${var.MYSQL_ROOT_PASSWORD} >> /etc/environment",
       "echo MYSQL_USER=${var.MYSQL_USER} >> /etc/environment",
       "echo MYSQL_PASSWORD=${var.MYSQL_PASSWORD} >> /etc/environment",
-      "echo MYSQL_DATABASE=${var.MYSQL_DATABASE} >> /etc/environment"
+      "echo MYSQL_DATABASE=${var.MYSQL_DATABASE} >> /etc/environment",
+      "echo INSTA_ACCESS_TOKEN=${var.MYSQL_DATABASE} >> /etc/environment"
     ]
     execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
   }
@@ -173,8 +179,6 @@ build {
       "${path.root}/scripts/build/upgrade-apt.sh",
       "${path.root}/scripts/build/install-common-tools.sh",
       "${path.root}/scripts/build/install-docker.sh",
-      "${path.root}/scripts/build/install-cwagent.sh",
-      "${path.root}/scripts/build/install-cdagent.sh",
       "${path.root}/scripts/build/force-user-data-single.sh"
     ]
     execute_command = "sudo -S sh -c '{{ .Vars }} {{ .Path }}'"
